@@ -4,6 +4,7 @@ const { exec } = require('child_process');
 const yargs = require('yargs');
 const { Client, GatewayIntentBits } = require('discord.js'); // Import correct de discord.js
 const { google } = require('googleapis');
+const readline = require('readline');
 
 require('dotenv').config();
 
@@ -559,7 +560,6 @@ client.on('messageCreate', async (message) => {
     message.channel.id === DISCORD_TOKEN_CHANNEL_TEXT_TO_PDF &&
     !message.content.includes('BOT : ')
   ) {
-    console.log('Nouveau message reçu:', message);
     await processDiscordMessage(message.content);
     messageIDToDelete = message.id;
     // console.log('Message pris en compte, va etre supprime');
